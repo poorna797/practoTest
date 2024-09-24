@@ -1,0 +1,21 @@
+<suite name="practo_suite">
+	
+
+	<test name="practo">
+	
+	
+			<classes>
+			
+				
+				<class name="practo_tests.Practo_test"/>
+				<class name="base.base"/>
+					
+			</classes>
+			
+			
+	</test>
+	
+	
+	
+	
+</suite>
