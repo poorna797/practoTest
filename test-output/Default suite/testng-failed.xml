@@ -5,7 +5,10 @@
     <classes>
       <class name="practo_tests.Practo_test">
         <methods>
-          <include name="Test3"/>
+          <include name="Test2"/>
+          <include name="loadConfig"/>
+          <include name="report_set"/>
+          <include name="reports"/>
         </methods>
       </class> <!-- practo_tests.Practo_test -->
     </classes>

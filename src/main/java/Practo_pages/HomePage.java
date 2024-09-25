@@ -17,13 +17,28 @@ import com.aventstack.extentreports.Status;
 import base.base;
 
 public class HomePage extends base{
+	By city=By.xpath("//*[@id=\"c-omni-container\"]/div/div[1]/div[1]/input");
+	By InitialcityRemove=By.xpath("//*[@id=\"c-omni-container\"]/div/div[1]/div[1]/span[2]/span/i");
+	By Speciality=By.xpath("//*[@id=\"c-omni-container\"]/div/div[2]/div[1]/input");
+	By doctorname=By.xpath("//*[@id=\"container\"]/div/div[4]/div/div[1]/div/div[3]/div[1]/div/div[1]/div[2]/a/div/h2");
+	By slotbook =By.xpath("//*[@id=\"container\"]/div/div[4]/div/div[1]/div/div[3]/div[1]/div/div[2]/div/div/div[2]/div/button");
+	By AvailabilityMsg=By.xpath("//*[@id=\"container\"]/div/div[4]/div/div[1]/div/div[3]/div[1]/div/div[2]/div/div/div[1]/span");
+	By TomorrowAvailableDate=By.xpath("//*[@id=\"container\"]/div/div[4]/div/div[1]/div/div[3]/div[2]/div/div/div/div[2]/div[2]/div/div[2]/div[2]/button/span");
+	By TomorrowButton=By.xpath("//*[@id=\"container\"]/div/div[4]/div/div[1]/div/div[3]/div[2]/div/div/div/div[2]/div[2]/div/div[2]/div[2]/button"); 
+	By TimeButton=By.xpath("//*[@id=\"container\"]/div/div[4]/div/div[1]/div/div[3]/div[2]/div/div/div/div[2]/div[2]/div[1]/div[2]/div[1]/span");
+	By DoctorPageTime=By.xpath("//*[@id=\"container\"]/div[2]/div/div[1]/div/div[1]/div[2]/div[1]/div[2]/span[2]");
+	By DoctorPageDate=By.xpath("//*[@id=\"container\"]/div[2]/div/div[1]/div/div[1]/div[2]/div[1]/div[1]/span[2]");
+	By doctorsList=By.xpath("//h2[starts-with(text(),'Dr.')]");
+	By DoctorSpecialityList=By.xpath("//div[@class=\"u-d-flex\"]/span");
+	By FiltersButton=By.xpath("//*[@id=\"container\"]/div/div[3]/div/div/header/div[1]/div/div[4]/i");
+	By FiltersSelection=By.xpath("//*[@id=\"container\"]/div/div[3]/div/div/header/div[2]/div/div[1]/div/label[1]/div");
+	By ConsultationFees=By.xpath("//span[text()=\"₹\"]");
 	
-
-
-	 public void citySelection() throws Exception {
-	        WebElement from = driver.findElement(By.xpath("//*[@id=\"c-omni-container\"]/div/div[1]/div[1]/input"));
+	
+	public void citySelection() throws Exception {
+	        WebElement from = driver.findElement(city);
 	        from.click();
-	        driver.findElement(By.xpath("//*[@id=\"c-omni-container\"]/div/div[1]/div[1]/span[2]/span/i")).click();
+	        driver.findElement(InitialcityRemove).click();
 
 	        from.sendKeys(config.getProperty("cityName"));
 	        Thread.sleep(3000);
@@ -36,7 +51,7 @@ public class HomePage extends base{
 	    }
 
 	    public void specialitySelection() throws Exception {
-	        WebElement specialist = driver.findElement(By.xpath("//*[@id=\"c-omni-container\"]/div/div[2]/div[1]/input"));
+	        WebElement specialist = driver.findElement(Speciality);
 	        specialist.sendKeys(config.getProperty("specialty"));
 	        specialist.click();
 	        Thread.sleep(3000);
@@ -52,43 +67,37 @@ public class HomePage extends base{
 	
 	
 	public void slotSelection() throws Exception{
-		WebElement name=driver.findElement(By.xpath("//*[@id=\"container\"]/div/div[4]/div/div[1]/div/div[3]/div[1]/div/div[1]/div[2]/a/div/h2"));
+		WebElement name=driver.findElement(doctorname);
 		
 		String strname=name.getText();
 		System.out.println(strname);
 		Thread.sleep(2000);
 		
-		
-	
-
-		
-		
-		
-		driver.findElement(By.xpath("//*[@id=\"container\"]/div/div[4]/div/div[1]/div/div[3]/div[1]/div/div[2]/div/div/div[2]/div/button")).click();
+		driver.findElement(slotbook).click();
 		Thread.sleep(3000);
 		
-		WebElement NoslotsToday=driver.findElement(By.xpath("//*[@id=\"container\"]/div/div[4]/div/div[1]/div/div[3]/div[1]/div/div[2]/div/div/div[1]/span"));
+		WebElement NoslotsToday=driver.findElement(AvailabilityMsg);
 		String NotodaySlots=NoslotsToday.getText();
 		System.out.println(NotodaySlots);
 		
-		WebElement NoslotsToday1=driver.findElement(By.xpath("//*[@id=\"container\"]/div/div[4]/div/div[1]/div/div[3]/div[2]/div/div/div/div[2]/div[2]/div/div[2]/div[2]/button/span"));
+		WebElement NoslotsToday1=driver.findElement(TomorrowAvailableDate);
 		String NotodaySlots1=NoslotsToday1.getText().substring(21);
 
 		
-		driver.findElement(By.xpath("//*[@id=\"container\"]/div/div[4]/div/div[1]/div/div[3]/div[2]/div/div/div/div[2]/div[2]/div/div[2]/div[2]/button")).click();
+		driver.findElement(TomorrowButton).click();
 		
-		WebElement time=driver.findElement(By.xpath("//*[@id=\"container\"]/div/div[4]/div/div[1]/div/div[3]/div[2]/div/div/div/div[2]/div[2]/div[1]/div[2]/div[1]/span"));
+		WebElement time=driver.findElement(TimeButton);
 		String strtime=time.getText();
 		System.out.println(strtime);
     	time.click();
     	Thread.sleep(2000);
 		
 		
-		WebElement time2=driver.findElement(By.xpath("//*[@id=\"container\"]/div[2]/div/div[1]/div/div[1]/div[2]/div[1]/div[2]/span[2]"));
+		WebElement time2=driver.findElement(DoctorPageTime);
 		String strtime2=time2.getText();
 		System.out.println(strtime2);
 		
-		WebElement date2 = driver.findElement(By.xpath("//*[@id=\"container\"]/div[2]/div/div[1]/div/div[1]/div[2]/div[1]/div[1]/span[2]"));
+		WebElement date2 = driver.findElement(DoctorPageDate);
         String strdate = date2.getText();
         
         
@@ -200,8 +209,8 @@ public class HomePage extends base{
 	
 	
 	public void doctorsList() {
-		List<WebElement> doctorList = driver.findElements(By.xpath("//h2[starts-with(text(),'Dr.')]"));
-		List<WebElement> specialityList = driver.findElements(By.xpath("//div[@class=\"u-d-flex\"]/span"));
+		List<WebElement> doctorList = driver.findElements(doctorsList);
+		List<WebElement> specialityList = driver.findElements(DoctorSpecialityList);
 
 		if (doctorList.size() == specialityList.size()) {
 		    for (int i = 0; i < doctorList.size(); i++) {
@@ -230,16 +239,16 @@ public class HomePage extends base{
 	
 	
 	public void ToVerifyFilteredValues() throws Exception {
-		WebElement filters = driver.findElement(By.xpath("//*[@id=\"container\"]/div/div[3]/div/div/header/div[1]/div/div[4]/i"));
+		WebElement filters = driver.findElement(FiltersButton);
 		filters.click();
 		Thread.sleep(3000);
-		WebElement prices= driver.findElement(By.xpath("//*[@id=\"container\"]/div/div[3]/div/div/header/div[2]/div/div[1]/div/label[1]/div"));
+		WebElement prices= driver.findElement(FiltersSelection);
 		prices.click();
 		
 
 		
 		
-		List<WebElement> consultation_fees = driver.findElements(By.xpath("//span[text()=\"₹\"]"));
+		List<WebElement> consultation_fees = driver.findElements(ConsultationFees);
 
 //		
 		List<Integer> feeList = new ArrayList<>(); // List to store fees as Integers
